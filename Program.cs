@@ -6,6 +6,11 @@ namespace Planner
     {
         static void Main(string[] args)
         {
+            City metropolis = new City();
+            metropolis.name = "Metropolis";
+            metropolis.mayor = "Batman";
+            metropolis.dateEstablished = "1943";
+
             Building FiveOneTwoEigth = new Building("512 8th Avenue")
             {
                 stories = 10,
@@ -14,7 +19,6 @@ namespace Planner
             };
             FiveOneTwoEigth.Construct();
             FiveOneTwoEigth.Purchase("Ronald McDonald");
-            FiveOneTwoEigth.DisplayBuilding();
 
             Building SevenSixOneFifth = new Building("761 5th Place")
             {
@@ -24,7 +28,15 @@ namespace Planner
             };
             SevenSixOneFifth.Construct();
             SevenSixOneFifth.Purchase("Gary Busey");
-            SevenSixOneFifth.DisplayBuilding();
+
+            metropolis.AddBuilding(FiveOneTwoEigth);
+            metropolis.AddBuilding(SevenSixOneFifth);
+
+            foreach (Building building in metropolis.Buildings)
+            {
+                building.DisplayBuilding();
+            }
+
         }
 
     }
